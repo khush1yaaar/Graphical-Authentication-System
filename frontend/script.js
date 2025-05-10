@@ -64,38 +64,59 @@ document.getElementById("myForm").addEventListener("submit", function(event) {
         else alert("Please select an object!");
     }
   });
-function signup() {
-    sessionStorage.setItem("upname", document.getElementById('upmail').value);
-    sessionStorage.setItem("uppass", uppass);
-    // console.log(uppass);
-    if(uppass.length== null){
-        alert("choose any object")
+// Updated signup function
+async function signup() {
+    const email = document.getElementById('upmail').value;
+    const pattern = uppass; // This should be your graphical pattern array
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, pattern })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Signup failed');
+      }
+      
+      alert(data.message || "Account Created Successfully");
+      console.log("User created:", data.user);
+    } catch (error) {
+      console.error("Signup Error:", error);
+      alert(error.message || "Signup failed - please try again");
     }
-    var myText = "Account Created Succesfully";
-    alert(myText);
-    // console.log("run");
-
-}
-
-// image pattern authentication
+  }
+  
+  // Updated signin function
+  async function signin() {
+    const email = document.getElementById('inmail').value;
+    const pattern = inpass; // This should be your graphical pattern array
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, pattern })
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+      }
+      
+      alert(data.message || "Login successful");
+      NewTab();
+    } catch (error) {
+      console.error("Login Error:", error);
+      alert(error.message || "Login failed - please try again");
+      sendMail3();
+    }
+  }// image pattern authentication
 var v2 = new Boolean(false);
-function signin() {
-    let str = document.getElementById('inmail').value;
-    let array = sessionStorage.getItem("uppass");
-    
-    let check1 = array.localeCompare(inpass.toString());
-    if ((!str.localeCompare(sessionStorage.getItem("upname"))) && !check1) {
-        var myText = "Login is successful";
-        alert(myText);
-        NewTab(); 
-    }
-    else{
-        var myText = "Login Failed";
-        alert(myText);
-        emailjs.init("red7y59yf11Vsfxj2");
-        sendMail3();
-    }
-}
 
 var templateParams = {
     to_name: 'User',
