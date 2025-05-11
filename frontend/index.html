@@ -13,28 +13,29 @@
                 <h1>Create Account</h1>
                 <input type="text" placeholder="Name">
                 <input type="email" placeholder="Email" id="upmail" class="email" required>
+                <input type="hidden" id="signupPattern" name="signupPattern">
 
                 <div class="password">
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s01"><img src="images/Slice 1.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s02"><img src="images/Slice 2.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s03"><img src="images/Slice 3.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s04"><img src="images/Slice 4.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s05"><img src="images/Slice 5.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s01"><img src="images/Slice 1.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s02"><img src="images/Slice 2.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s03"><img src="images/Slice 3.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s04"><img src="images/Slice 4.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s05"><img src="images/Slice 5.png" alt="" class="patimg"></div>
                     </div>
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s06"><img src="images/Slice 6.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s07"><img src="images/Slice 7.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s08"><img src="images/Slice 8.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s09"><img src="images/Slice 9.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s10"><img src="images/Slice 10.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s06"><img src="images/Slice 6.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s07"><img src="images/Slice 7.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s08"><img src="images/Slice 8.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s09"><img src="images/Slice 9.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s10"><img src="images/Slice 10.png" alt="" class="patimg"></div>
                     </div>
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s11"><img src="images/Slice 11.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s12"><img src="images/Slice 12.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s13"><img src="images/Slice 13.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s14"><img src="images/Slice 14.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s15"><img src="images/Slice 15.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s11"><img src="images/Slice 11.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s12"><img src="images/Slice 12.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s13"><img src="images/Slice 13.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s14"><img src="images/Slice 14.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signup')" id="s15"><img src="images/Slice 15.png" alt="" class="patimg"></div>
                     </div>
                 </div>
                 <input type="submit" id="signupbtn" values = "Sign Up">
@@ -44,27 +45,29 @@
             <form action="#">
                 <h1>Sign in</h1>
                 <input type="email" placeholder="Email" id="inmail" required>
+                <input type="hidden" id="signinPattern" name="signinPattern">
+
                 <div class="password">
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s01"><img src="images/Slice 1.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s02"><img src="images/Slice 2.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s03"><img src="images/Slice 3.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s04"><img src="images/Slice 4.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s05"><img src="images/Slice 5.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s01"><img src="images/Slice 1.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s02"><img src="images/Slice 2.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s03"><img src="images/Slice 3.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s04"><img src="images/Slice 4.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s05"><img src="images/Slice 5.png" alt="" class="patimg"></div>
                     </div>
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s06"><img src="images/Slice 6.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s07"><img src="images/Slice 7.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s08"><img src="images/Slice 8.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s09"><img src="images/Slice 9.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s10"><img src="images/Slice 10.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s06"><img src="images/Slice 6.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s07"><img src="images/Slice 7.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s08"><img src="images/Slice 8.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s09"><img src="images/Slice 9.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s10"><img src="images/Slice 10.png" alt="" class="patimg"></div>
                     </div>
                     <div class="row">
-                        <div class="passing" onclick="upimg(this)" id="s11"><img src="images/Slice 11.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s12"><img src="images/Slice 12.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s13"><img src="images/Slice 13.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s14"><img src="images/Slice 14.png" alt="" class="patimg"></div>
-                        <div class="passing" onclick="upimg(this)" id="s15"><img src="images/Slice 15.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s11"><img src="images/Slice 11.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s12"><img src="images/Slice 12.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s13"><img src="images/Slice 13.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s14"><img src="images/Slice 14.png" alt="" class="patimg"></div>
+                        <div class="passing" onclick="selectPattern(this, 'signin')" id="s15"><img src="images/Slice 15.png" alt="" class="patimg"></div>
                     </div>
                 </div>
 

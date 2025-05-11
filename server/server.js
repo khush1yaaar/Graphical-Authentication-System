@@ -8,14 +8,49 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Improved MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true
-})
-.then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('MongoDB connection error:', err));
+// Enhanced MongoDB connection with retry logic
+const connectWithRetry = () => {
+  console.log('Attempting MongoDB connection...');
+  return mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000,
+    retryWrites: true,
+    retryReads: true
+  })
+  .then(() => console.log('Connected to MongoDB'))
+  .catch(err => {
+    console.error('MongoDB connection error:', err.message);
+    console.log('Retrying connection in 5 seconds...');
+    setTimeout(connectWithRetry, 5000);
+  });
+};
+
+connectWithRetry();
+
+// Connection event listeners
+mongoose.connection.on('connected', () => {
+  console.log('Mongoose connected to DB');
+});
+
+mongoose.connection.on('error', (err) => {
+  console.log('Mongoose connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose disconnected');
+});
+
+// Middleware to check DB connection before handling requests
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState !== 1) {
+    return res.status(503).json({ 
+      error: 'Database not connected',
+      solution: 'Please try again in a few moments'
+    });
+  }
+  next();
+});
 
 // Enhanced error handling middleware
 app.use((err, req, res, next) => {
@@ -43,7 +78,7 @@ app.post('/api/signup', async (req, res) => {
 
     const newUser = new User({ 
       email, 
-      graphicalPattern: JSON.stringify(pattern) // Stringify pattern
+      graphicalPattern: JSON.stringify(pattern)
     });
     
     await newUser.save();
@@ -85,17 +120,13 @@ app.post('/api/signin', async (req, res) => {
     // Compare stringified patterns
     const inputPattern = JSON.stringify(pattern);
     if (user.graphicalPattern !== inputPattern) {
-      console.log('Invalid pattern:', user.graphicalPattern, inputPattern);
+      console.log('Pattern mismatch:', { 
+        expected: user.graphicalPattern, 
+        received: inputPattern 
+      });
       return res.status(401).json({ 
-        error: `Pattern mismatch!<br><br>
-                Stored: ${storedPattern}<br>
-                Entered: ${inputPattern}<br><br>
-                (Compare these in console for exact difference)`,
-        field: 'pattern',
-        debug: {
-          storedPattern,
-          inputPattern
-        }
+        error: 'Invalid pattern',
+        field: 'pattern'
       });
     }
 
@@ -112,6 +143,7 @@ app.post('/api/signin', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
